@@ -13,4 +13,4 @@
     @else
         <p>No products found</p>
     @endif
-@endsection
+@endsection 
