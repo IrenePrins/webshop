@@ -14,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderby('title', 'dsc')->paginate(10);
         return view('products/index')->with('products', $products);
     }
 
@@ -25,7 +25,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products/create');
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $post = Product::find($id);
+        $product = Product::find($id);
         return view('products.show')->with('product', $product);
     }
 
