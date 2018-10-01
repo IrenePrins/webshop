@@ -5,10 +5,11 @@
     <button class="btn btn-default"><a href="/products"> < all products</a></button>
     <h3>{{$product->title}}</h3>
     
-
     <div>
         {{$product->description}}
     </div>
     <hr>
     <small>Toegevoegd op : {{$product->created_at}}</small>
+
+    <a href="{{$product->id}}/edit" class="btn btn-default btn-small">Edit Product</a>
 @endsection 

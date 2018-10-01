@@ -38,8 +38,17 @@ class ProductsController extends Controller
     public function store(CreateProductRequest $request)
     {
         // data valid
+        $product = new Product;
+        $product->title = $request->input('name');
+        $product->description = $request->input('description');
+        $product->user_id = 1; 
+        $product->save();
+        
+        return redirect('/products')->with('success', 'New product created!');
 
-        return 'hoi';
+        
+
+        
     }
 
     /**
@@ -50,6 +59,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
+        //show all products
         $product = Product::find($id);
         return view('products.show')->with('product', $product);
     }
@@ -62,7 +72,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.edit')->with('product', $product);
     }
 
     /**

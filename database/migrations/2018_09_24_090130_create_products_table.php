@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->mediumtext('description');
             $table->float('price', 6, 2);
             $table->timestamps();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

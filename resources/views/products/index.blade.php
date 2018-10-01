@@ -2,6 +2,12 @@
 
 
 @section('content')
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h3>Products</h3>
     @if(count($products) > 0)
         @foreach($products as $product)
