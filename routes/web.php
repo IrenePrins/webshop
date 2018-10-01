@@ -20,9 +20,15 @@ Route::get('/users/{id}', function($id, $name){
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services');
+Route::get('/services', 'PagesController@services')->name('services');
 
 Route::resource('products', 'ProductsController');
+
+// Route::post('/products/store', 'ProductsController@store');
+// Route::get('validate', function()
+// {
+//     return View::make('products/store');
+// });
 
 
 
