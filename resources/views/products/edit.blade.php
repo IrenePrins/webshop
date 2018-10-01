@@ -7,7 +7,7 @@
         
     </div>
     <h3>Edit Your Product</h3>
-    {!! Form::open([', $product->id], 'method' => 'POST']) !!}
+    {!! Form::open(['action' => ['ProductsController@update', $product->id], 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name')!!}
             {!! Form::text('name', $product->title, ['class' => 'form-control', 'placeholder' => 'Name']) !!} 
@@ -19,7 +19,7 @@
         {!! Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Description']) !!} 
         <span>{{ $errors->first('description')}}</span>
         </div>
-        {{-- {!! Form::hidden('_method' => 'PUT')!!} --}}
+        {!! Form::hidden('_method', 'PUT')!!}
         {!! Form::submit('Submit') !!}
 
     {!! Form::close() !!}

@@ -83,9 +83,16 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateProductRequest $request, $id)
     {
-        //
+        //data valid en changed in db
+        $product = Product::find($id);
+        $product->title = $request->input('name');
+        $product->description = $request->input('description');
+        $product->user_id = 1; 
+        $product->save();
+        
+        return redirect('/products')->with('success', 'Your product is updated!');
     }
 
     /**
