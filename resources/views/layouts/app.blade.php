@@ -67,7 +67,17 @@
                                 </div>
                             </li>
                         @endguest
+
                     </ul>
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/products">Products<span class="sr-only"></span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/products/create/">Create Product</a>
+                      </li>
+                    </ul>
+              
                 </div>
             </div>
         </nav>

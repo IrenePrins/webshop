@@ -106,6 +106,6 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect('/products')->with('alert-danger', 'Your product is deleted!');
+        return redirect('/products')->with('success', 'Your product is deleted!');
     }
 }
