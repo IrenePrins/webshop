@@ -12,6 +12,9 @@
     <small>Toegevoegd op : {{$product->created_at}}</small>
 
     <a href="{{$product->id}}/edit" class="btn btn-default btn-small">Edit Product</a>
-    {!!Form::open('action' => ['ProductsController@destroy', $product->id], 'method' => 'POST', 'class' => 'pull-right')}
-    {!!Form::close() !!}
+    {!!Form::open(['action' => ['ProductsController@destroy', $product->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+   {!!Form::close()!!}
+
 @endsection 
