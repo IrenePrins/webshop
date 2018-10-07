@@ -10,7 +10,18 @@
                 <div class="card-body">
                     <h3 class="card-title">Your Products</h3>
                     <!--Ik wil hier eigenlijk wel de producten zien die je al hebt toegevoegd en
-                        dan like 3 ofzo in een 3 rechthoeken naast elkaar-->    
+                        dan like 3 ofzo in een 3 rechthoeken naast elkaar-->   
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Your Products</th>
+                                <th></th>
+                                <th></th>   	
+                            </tr>
+                            @foreach($products as $product)
+                                <th>{{$product->title}}</th>
+                                <th><a href="/products/{{$product->id}}/edit" class="btn btn-default">Edit</a></th>
+                            @endforeach
+                        </table> 
                         <p class="card-text">text </p>               
                 </div>
                 

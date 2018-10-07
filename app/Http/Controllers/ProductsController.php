@@ -87,9 +87,11 @@ class ProductsController extends Controller
     {
         //data valid en changed in db
         $product = Product::find($id);
-        $product->title = $request->input('name');
+        $product->title = $request->input('title');
         $product->description = $request->input('description');
-        $product->user_id = 1; 
+        $product->price = $request->input('price');
+        $product->user_id = auth()->user()->id; 
+        $product->image = $request->input('image');
         $product->save();
         
         return redirect('/products')->with('success', 'Your product is updated!');

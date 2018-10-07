@@ -26,7 +26,8 @@ class CreateProductRequest extends FormRequest
         return [
             //
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'price' => 'required',
         ];
     }
 
@@ -38,8 +39,9 @@ class CreateProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Hee joh, je moet wel een naam invullen!!',
-            'description.required' => 'De description is wel nodig!'
+            'name.required' => 'Please, fill in the name',
+            'description.required' => 'Please, fill in the description',
+            'price.required' => 'Please, fill in the price',
         ];
     }
 }
