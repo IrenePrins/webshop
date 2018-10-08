@@ -24,12 +24,12 @@
             </div>
 
             {!! Form::label('price', 'Price')!!}
-            {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price']) !!}
+            {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price', 'step' => 'any', 'min' => '1']) !!}
             {{-- hier moet een max op komen nog --}}
             <span>{{ $errors->first('price')}}</span>
-            
-            {!! Form::label('Img', 'Image of the product')!!}
-            {!!Form::file('image')!!}
+
+            {{-- {!! Form::label('Img', 'Image of the product')!!}
+            {!!Form::file('image')!!} --}}
             <br><br>
             {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
             {{--werkt nog niet om img toe te voegen--}}

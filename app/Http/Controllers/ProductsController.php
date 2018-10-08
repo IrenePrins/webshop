@@ -13,6 +13,12 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $products = Product::orderby('title', 'dsc')->paginate(10);
@@ -39,7 +45,7 @@ class ProductsController extends Controller
     {
         // data valid
         $product = new Product;
-        $product->title = $request->input('name');
+        $product->title = $request->input('title');
         $product->description = $request->input('description');
         $product->user_id = 1; 
         $product->save();
@@ -73,6 +79,11 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
+
+        //check correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/products')->with('error', 'Unauthorized page, no access');
+        }
         return view('products.edit')->with('product', $product);
     }
 
@@ -106,6 +117,11 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/products');
+        }
+
         $product->delete();
 
         return redirect('/products')->with('success', 'Your product is deleted!');
