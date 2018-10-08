@@ -43,11 +43,24 @@ class ProductsController extends Controller
      */
     public function store(CreateProductRequest $request)
     {
+      
+        //handle file upload
+        if($request->hasFile('image')){
+            //getfilename
+
+        }else{
+            $nofiletostore = 'noimage.jpg';
+        }
+
+        //IK MOET NOG FIXEN DAT HET TYPE IMAGE VERANDERD WORDT IN EEN STRING IPV EEN BLOB MET MIGRATIES WANT DAT IS BETER 
+
         // data valid
         $product = new Product;
         $product->title = $request->input('title');
         $product->description = $request->input('description');
-        $product->user_id = 1; 
+        $product->price = $request->input('price');
+        $product->user_id = auth()->user()->id; 
+        $product->image = $request->input('image');
         $product->save();
         
         return redirect('/products')->with('success', 'New product created!');

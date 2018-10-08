@@ -25,9 +25,10 @@ class CreateProductRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required',
+            'title' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => ['required', 'numeric'],
+            'image' => 'image|nullable|max:1999'
         ];
     }
 
@@ -39,9 +40,9 @@ class CreateProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Please, fill in the name',
+            'title.required' => 'Please, fill in the name',
             'description.required' => 'Please, fill in the description',
-            'price.required' => 'Please, fill in the price',
+            'price.required' => 'Please, fill in the price'
         ];
     }
 }
