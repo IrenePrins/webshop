@@ -8,21 +8,27 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <h3 class="card-title">Your Products</h3>
                     <!--Ik wil hier eigenlijk wel de producten zien die je al hebt toegevoegd en
                         dan like 3 ofzo in een 3 rechthoeken naast elkaar-->   
-                        <table class="table table-striped">
+                        <table class="table">
                             <tr>
                                 <th>Your Products</th>
                                 <th></th>
                                 <th></th>   	
                             </tr>
                             @foreach($products as $product)
-                                <th>{{$product->title}}</th>
-                                <th><a href="/products/{{$product->id}}/edit" class="btn btn-default">Edit</a></th>
+                            <tr>
+                                <td>{{$product->title}}</td>
+                                <td>{{$product->description}}</td>
+                                <td><a href="/products/{{$product->id}}/edit" class="btn btn-primary">Edit</a>
+                                    {!!Form::open(['action' => ['ProductsController@destroy', $product->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                    {!!Form::close()!!}
+                                </td>
+                            </tr>
                             @endforeach
-                        </table> 
-                        <p class="card-text">text </p>               
+                        </table>             
                 </div>
                 
             </div>
