@@ -10,7 +10,7 @@
     {{--  DIT MOET WEG --}}
     <div class="col-s-8">
         <h3>Add Your Product</h3>
-        {!! Form::open(['url' => '/products', 'enctype' => 'multipart/data']) !!}
+        {!! Form::open(['url' => '/products', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('title', 'Title')!!}
                 {!! Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title']) !!} 

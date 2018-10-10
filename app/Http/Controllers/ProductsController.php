@@ -46,10 +46,19 @@ class ProductsController extends Controller
       
         //handle file upload
         if($request->hasFile('image')){
-            //getfilename
+        //getfilename with extention
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+        //get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+        //filename to store + timestamp -> original
+            $filenameToStore = $filename. '_' .time(). '.' .$extension;
+        //store in storage
+            $path = $request->file('image')->storeAs('public/product_images', $filenameToStore);
 
         }else{
-            $nofiletostore = 'noimage.jpg';
+            $filenameToStore = 'noimage.jpg';
         }
 
         //IK MOET NOG FIXEN DAT HET TYPE IMAGE VERANDERD WORDT IN EEN STRING IPV EEN BLOB MET MIGRATIES WANT DAT IS BETER 
@@ -60,7 +69,7 @@ class ProductsController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->user_id = auth()->user()->id; 
-        $product->image = $request->input('image');
+        $product->image = $filenameToStore;
         $product->save();
         
         return redirect('/products')->with('success', 'New product created!');
