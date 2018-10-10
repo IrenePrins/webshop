@@ -59,9 +59,7 @@ class ProductsController extends Controller
 
         }else{
             $filenameToStore = 'noimage.jpg';
-        }
-
-        //IK MOET NOG FIXEN DAT HET TYPE IMAGE VERANDERD WORDT IN EEN STRING IPV EEN BLOB MET MIGRATIES WANT DAT IS BETER 
+        };
 
         // data valid
         $product = new Product;
