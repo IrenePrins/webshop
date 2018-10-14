@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <button class="btn btn-default"><a href="/products"> < all products</a></button>
+    <a href="/products" class="btn btn-primary">all products</a>
     <h3>{{$product->title}}</h3>
     
     <div class="row">

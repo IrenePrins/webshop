@@ -18,10 +18,7 @@ Route::get('/users/{id}', function($id, $name){
 
 //if user visits /about then do function()
 
-Route::get('/', 'PagesController@index');
-Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services')->name('services');
-
+Route::get('/', 'ProductsController@index');
 Route::resource('products', 'ProductsController');
 
 // Route::post('/products/store', 'ProductsController@store');
@@ -34,5 +31,6 @@ Route::resource('products', 'ProductsController');
 
 
 Auth::routes();
+
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
