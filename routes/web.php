@@ -20,7 +20,7 @@ Route::get('/users/{id}', function($id, $name){
 
 Route::get('/', 'ProductsController@index');
 Route::resource('products', 'ProductsController');
-
+Route::get('/admin', 'AdminController@index');
 // Route::post('/products/store', 'ProductsController@store');
 // Route::get('validate', function()
 // {
