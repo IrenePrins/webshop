@@ -20,14 +20,12 @@ Route::get('/users/{id}', function($id, $name){
 
 Route::get('/', 'ProductsController@index');
 Route::resource('products', 'ProductsController');
-Route::get('/admin', 'AdminController@index');
-// Route::post('/products/store', 'ProductsController@store');
-// Route::get('validate', function()
-// {
-//     return View::make('products/store');
-// });
 
-
+Route::prefix('admin')->group(function(){
+    Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login.submit');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+});
 
 
 Auth::routes();
