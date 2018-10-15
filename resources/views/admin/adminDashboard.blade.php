@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Admin Dashboard</div>
+            <div class="panel">
+                {{-- <div class="card-header">Admin Dashboard</div>
 
                 <div class="card-body">
                     <!--Ik wil hier eigenlijk wel de producten zien die je al hebt toegevoegd en
@@ -14,7 +14,9 @@
                         <table class="table">
                             
                         </table>             
-                </div>
+                </div> --}}
+                @component('components.who')
+                @endcomponent
                 
             </div>
         </div>
