@@ -20,12 +20,12 @@ Route::get('/users/{id}', function($id, $name){
 
 Route::get('/', 'ProductsController@index');
 Route::resource('products', 'ProductsController');
-
+Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
-
+Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
 
 Auth::routes();
