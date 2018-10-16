@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = DB::select('SELECT products.title, users.name FROM products INNER JOIN users ON products.user_id = users.id');
+        $users = DB::select('SELECT users.name, COUNT(products.user_id) FROM products INNER JOIN users ON users.id = products.user_id GROUP BY products.user_id');
 
         return view('admin.adminDashboard', ['users' => $users]);
     }
