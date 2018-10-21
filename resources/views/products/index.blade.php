@@ -11,19 +11,7 @@
     <h3>Products</h3>
     @if(count($products) > 0)
         @foreach($products as $product)
-        {{-- <div class="well">
-            <div class="row">
-                <div class="col-md-4 col-sm4">
-                    <img style='width : 100%'src="/storage/product_images/{{$product->image}}"/>
-                </div>
-                <div class="col-md-8 col-sm8">
-                    <h3><a href="/products/{{$product->id}}">{{$product->title}}</a></h3>
-                    <small>Toegevoegd op : {{$product->created_at}}</small>
-                </div>
-            </div>
-                
-        </div> --}}
-        <div class="card" style="width: 18rem;">
+        <div class="card col-md-3">
                 <img class="card-img-top" src="/storage/product_images/{{$product->image}}" alt="Image of the product">
                 <div class="card-body">
                   <h5 class="card-title">{{$product->title}}</h5>

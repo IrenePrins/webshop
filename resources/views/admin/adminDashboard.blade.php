@@ -20,14 +20,39 @@
                 
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">New Product</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Add new products</h6>
-              <p class="card-text">Your new product has to have a title and a description.</p>
-              <a href="/products/create" role="button" class="card-link btn btn-info">Create new product</a>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Dashboard
             </div>
-          </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>User name</th>
+                        <th>Product title</th>   	
+                    </tr>                   
+
+                    @foreach($users as $user)
+                    <tr>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->numberOfProducts}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">New Product</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Add new products</h6>
+                    <p class="card-text">Your new product has to have a title and a description.</p>
+                    <a href="/products/create" role="button" class="card-link btn btn-info">Create new product</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
