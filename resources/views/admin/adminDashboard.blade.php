@@ -32,12 +32,12 @@
                     <tr>
                         <th>User name</th>
                         <th>Product title</th>   	
-                    </tr>
-                    
+                    </tr>                   
+
                     @foreach($users as $user)
                     <tr>
                         <td>{{$user->name}}</td>
-                        <td>{{$user->products.user_id}}</td>
+                        <td>{{$user->numberOfProducts}}</td>
                     </tr>
                     @endforeach
                 </table>
