@@ -26,7 +26,7 @@ Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admi
 Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-
+Route::get('/search', 'searchController@search')->name('search');
 
 Auth::routes();
 
