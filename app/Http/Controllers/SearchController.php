@@ -11,8 +11,10 @@ class SearchController extends Controller
 {
     public function search(Request $request){
 
+        $search = $request->input('search');
+
         $results = DB::table('products')
-                ->where('title', 'like', '%$search%')
+                ->where('title', 'like', "%$search%")
                 ->get();
 
         return view('search')->with('results', $results);

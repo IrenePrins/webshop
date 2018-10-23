@@ -15,13 +15,14 @@
         <div class="card col-md-3">
                 {{-- <img class="card-img-top" src="/storage/product_images/{{$result->image}}" alt="Image of the product"> --}}
                 <div class="card-body">
-                  <h5 class="card-title">{{$result->title}}</h5>
-                <p class="card-text">{{$result->description}}</p>
+                    <img style='width : 100%'src="/storage/product_images/{{$result->image}}"/>
+                    <h5 class="card-title">{{$result->title}}</h5>
+                    <p class="card-text">{{$result->description}}</p>
+
                   {{-- <a href="/products/{{$product->id}}" class="btn btn-primary">Details</a> --}}
                 </div>
               </div>
         @endforeach
-        {{$products->links()}}
     @else
         <p>No products found</p>
     @endif
