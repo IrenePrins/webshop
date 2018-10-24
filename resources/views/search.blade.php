@@ -3,13 +3,8 @@
 
 @section('content')
 
-    {{-- @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif --}}
-    <h3>Search result</h3>
-    <p>Search result is {{ request()->input('search')}}</p>
+    <h3>Search results</h3>
+    <p>{{$results->count()}} Search Result(s) for {{ request()->input('search')}}</p>
     @if(count($results) > 0)
         @foreach($results as $result)
         <div class="card col-md-3">
@@ -17,7 +12,8 @@
                 <div class="card-body">
                     <img style='width : 100%'src="/storage/product_images/{{$result->image}}"/>
                     <h5 class="card-title">{{$result->title}}</h5>
-                    <p class="card-text">{{$result->description}}</p>
+                    <p class="card-text">{{str_limit($result->description, 80)}}</p>
+                    <a href="/products/{{$result->id}}" class="btn btn-primary">Details</a>
 
                   {{-- <a href="/products/{{$product->id}}" class="btn btn-primary">Details</a> --}}
                 </div>
@@ -26,5 +22,4 @@
     @else
         <p>No products found</p>
     @endif
-    <p>HALLO SEARCH</p>
 @endsection

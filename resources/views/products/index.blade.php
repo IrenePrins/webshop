@@ -8,6 +8,10 @@
             {{ session('success') }}
         </div>
     @endif
+
+    @component('components.filter')
+    @endcomponent
+    
     <h3>Products</h3>
     @if(count($products) > 0)
         @foreach($products as $product)
