@@ -21,18 +21,19 @@
         </div>
         
         {!! Form::label('price', 'Price')!!}
-            {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price']) !!}
-            {{-- hier moet een max op komen nog --}}
-            <span>{{ $errors->first('price')}}</span>
-            
-            {!! Form::label('Img', 'Image of the product')!!}
-            {!!Form::file('image')!!}
-            <br><br>
+        {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price']) !!}
+        {{-- hier moet een max op komen nog --}}
+        <span>{{ $errors->first('price')}}</span>
 
-            {!! Form::hidden('_method', 'PUT')!!}
+        {!! Form::select('categorie', ['H' => 'Heels', 'B' => 'Boots', 'Sa' => 'Sandals', 'Sn' => 'Sneakers'], null, ['placeholder' => 'Pick a category...'])!!}
+        
+        {!! Form::label('Img', 'Image of the product')!!}
+        {!!Form::file('image')!!}
+        <br><br>
 
-            {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
-            {{--werkt nog niet om img toe te voegen--}}
+        {!! Form::hidden('_method', 'PUT')!!}
+
+        {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
 
     {!! Form::close() !!}
     

@@ -101,7 +101,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
 
         //check correct user
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id !== $product->user_id){
             return redirect('/products')->with('error', 'Unauthorized page, no access');
         }
         return view('products.edit')->with('product', $product);
@@ -116,13 +116,14 @@ class ProductsController extends Controller
      */
     public function update(CreateProductRequest $request, $id)
     {
-        //data valid en changed in db
+        //data valid
         $product = Product::find($id);
         $product->title = $request->input('title');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->user_id = auth()->user()->id; 
         $product->image = $request->input('image');
+        $product->categorie = $
         $product->save();
         
         return redirect('/products')->with('success', 'Your product is updated!');
