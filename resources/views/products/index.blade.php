@@ -9,8 +9,8 @@
         </div>
     @endif
 
-    @component('components.filter')
-    @endcomponent
+ @component('components/filter')
+ @endcomponent
     
     <h3>Products</h3>
     @if(count($products) > 0)

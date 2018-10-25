@@ -28,12 +28,12 @@ class SearchController extends Controller
                 ->get();
 
         return view('search')->with('results', $results);
-
-       
         
     }
 
     public function filter(Request $request){
-        
+        $categories = DB::table('categories')->get();
+
+        return view('filter')->with('categories', $categories);
     }
 }

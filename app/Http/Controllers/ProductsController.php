@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\CreateProductRequest;
+use Illuminate\Support\Facades\DB;
+use App\Category;
 
 class ProductsController extends Controller
 {
@@ -22,6 +24,8 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::orderby('title', 'dsc')->paginate(10);
+        $categories = DB::table('categories')->get();
+
         return view('products/index')->with('products', $products);
     }
 

@@ -1,19 +1,22 @@
 <div class="row">
-    <div class="col-md-2">
-        <p>FILTER</p>
-    </div>
     <div class="col-md-8">
         <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter
-            </a>
-            
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Heels</a>
-                <a class="dropdown-item" href="#">Boots</a>
-                <a class="dropdown-item" href="#">Sandals</a>
-                <a class="dropdown-item" href="#">Sneakers</a>
-            </div>
+            <form action="{{ route('filter') }}">
+                <div class="form-group">
+                    <label for="sel1">Select filter:</label>
+                    <select class="form-control" id="sel1">
+                        <option>Boots</option>
+                        <option>Heels</option>
+                        <option>Sandals</option>
+                        <option>Sneakers</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 </div>
+{{-- 
+<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter
+    </a> --}}
