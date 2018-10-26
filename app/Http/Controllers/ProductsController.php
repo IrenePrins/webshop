@@ -71,13 +71,10 @@ class ProductsController extends Controller
         $product->price = $request->input('price');
         $product->user_id = auth()->user()->id; 
         $product->image = $filenameToStore;
+        $product->category = $request->input('category');
         $product->save();
         
         return redirect('/products')->with('success', 'New product created!');
-
-        
-
-        
     }
 
     /**
@@ -142,7 +139,7 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id !== $product->user_id){
             return redirect('/products');
         }
 

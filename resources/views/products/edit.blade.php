@@ -19,17 +19,24 @@
         {!! Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Description']) !!} 
         <span>{{ $errors->first('description')}}</span>
         </div>
-        
-        {!! Form::label('price', 'Price')!!}
-        {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price']) !!}
-        {{-- hier moet een max op komen nog --}}
-        <span>{{ $errors->first('price')}}</span>
 
-        {!! Form::select('categorie', ['H' => 'Heels', 'B' => 'Boots', 'Sa' => 'Sandals', 'Sn' => 'Sneakers'], null, ['placeholder' => 'Pick a category...'])!!}
-        
-        {!! Form::label('Img', 'Image of the product')!!}
-        {!!Form::file('image')!!}
-        <br><br>
+        <div class="form-group">
+            {!! Form::label('price', 'Price')!!}
+            {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price']) !!}
+            {{-- hier moet een max op komen nog --}}
+            <span>{{ $errors->first('price')}}</span>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('category', 'Category')!!}
+            {!! Form::select('category', ['Heels' => 'Heels', 'Boots' => 'Boots', 'Sandals' => 'Sandals', 'Sneakers' => 'Sneakers'], null, ['placeholder' => 'Pick a category...', 'class' => 'form-control'])!!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Img', 'Image of the product')!!}
+            {!!Form::file('image', ['class' => 'form-control'])!!}
+            <br><br>
+        </div>
 
         {!! Form::hidden('_method', 'PUT')!!}
 

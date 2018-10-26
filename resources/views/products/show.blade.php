@@ -19,20 +19,24 @@
     </div>
 
     <div class="row">
-            <div class="col-md-8 col-sm-8">
-                <h3>Price</h3>
-                <p>€{{$product->price}}<p>
-            </div>
+        <div class="col-md-8 col-sm-8">
+            <h3>Price</h3>
+            <p>€{{$product->price}}<p>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-sm-8">
+            <h3>Category</h3>
+            <p>{{$product->category}}<p>
+        </div>
+    </div>
 
     <hr>
     <small>Toegevoegd op : {{$product->created_at}}</small>
     @if(!Auth::guest())
         @if(Auth::user()->id == $product->user_id)
             <a href="{{$product->id}}/edit" class="btn btn-primary btn-small">Edit Product</a>
-
-
-
             {!!Form::open(['action' => ['ProductsController@destroy', $product->id], 'method' => 'POST', 'class' => 'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
