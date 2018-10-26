@@ -4,11 +4,11 @@
             <form action="{{ route('filter') }}">
                 <div class="form-group">
                     <label for="sel1">Select filter:</label>
-                    <select class="form-control" id="sel1">
-                        <option>Boots</option>
-                        <option>Heels</option>
-                        <option>Sandals</option>
-                        <option>Sneakers</option>
+                    <select class="form-control" id="sel1" name="filter">
+                        <option value="Boots">Boots</option>
+                        <option value="Heels">Heels</option>
+                        <option value="Sandals">Sandals</option>
+                        <option value="Sneakers">Sneakers</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

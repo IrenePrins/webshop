@@ -32,8 +32,12 @@ class SearchController extends Controller
     }
 
     public function filter(Request $request){
-        $categories = DB::table('categories')->get();
+        $filter = $request->input('filter');
 
-        return view('filter')->with('categories', $categories);
+        $results = DB::table('products')
+                ->where('category', 'like', "%$filter%")
+                ->get();
+                
+        return view('filter')->with('results', $results);
     }
 }
