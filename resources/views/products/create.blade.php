@@ -27,11 +27,24 @@
             {!! Form::number('price', '', ['class' => 'form-control', 'placeholder' => 'Price', 'step' => 'any', 'min' => '1']) !!}
             {{-- hier moet een max op komen nog --}}
             <span>{{ $errors->first('price')}}</span>
-            
+
             <div class="form-group">
+                {!! Form::label('category', 'Category')!!}
+                {!! Form::select('category', ['Heels' => 'Heels', 'Boots' => 'Boots', 'Sandals' => 'Sandals', 'Sneakers' => 'Sneakers'], null, ['placeholder' => 'Pick a category...', 'class' => 'form-control'])!!}
+            </div>
+        
+            <div class="form-group">
+                {!! Form::label('Img', 'Image of the product')!!}
+                {!!Form::file('image', ['class' => 'form-control'])!!}
+                <br><br>
+            </div>
+            
+            {{-- <div class="form-group">
             {!! Form::label('Img', 'Image of the product')!!}
             {!!Form::file('image')!!}
             </div>
+
+            {!! Form::select('category', ['Heels' => 'Heels', 'Boots' => 'Boots', 'Sandals' => 'Sandals', 'Sneakers' => 'Sneakers'], null, ['placeholder' => 'Pick a category...'])!!} --}}
             
             {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
             {{--werkt nog niet om img toe te voegen--}}
