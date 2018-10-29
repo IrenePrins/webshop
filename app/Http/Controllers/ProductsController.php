@@ -116,14 +116,32 @@ class ProductsController extends Controller
      */
     public function update(CreateProductRequest $request, $id)
     {
+        // dd("HIER NIET?? :(");
+        //handle file upload
+        if($request->hasFile('image')){
+            //getfilename with extention
+                $filenameWithExt = $request->file('image')->getClientOriginalName();
+            //get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just ext
+                $extension = $request->file('image')->getClientOriginalExtension();
+            //filename to store + timestamp -> original
+                $filenameToStore = $filename. '_' .time(). '.' .$extension;
+            //store in storage
+                $path = $request->file('image')->storeAs('public/product_images', $filenameToStore);
+    
+            }else{
+                $filenameToStore = 'noimage.jpg';
+            };
+
         //data valid
         $product = Product::find($id);
         $product->title = $request->input('title');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->user_id = auth()->user()->id; 
-        $product->image = $request->input('image');
-        $product->categorie = $
+        $product->image = $filenameToStore;
+        $product->category = $request->input('category');
         $product->save();
         
         return redirect('/products')->with('success', 'Your product is updated!');

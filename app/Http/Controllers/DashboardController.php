@@ -29,4 +29,15 @@ class DashboardController extends Controller
         $user = User::find($user_id);
         return view('dashboard')->with('products', $user->products);
     }
+
+    /**
+     * @param  int  $id
+     */
+    public function status($id)
+    {
+        $product = Product::find($id);
+        $product->status = !$product->status;
+        $product->save();
+        return redirect()->action('DashboardController@index');
+    }
 }

@@ -42,7 +42,8 @@ class CreateProductRequest extends FormRequest
         return [
             'title.required' => 'Please, fill in the name',
             'description.required' => 'Please, fill in the description',
-            'price.required' => 'Please, fill in the price'
+            'price.required' => 'Please, fill in the price',
+            'image.image' => 'Ech wel gek!'
         ];
     }
 }

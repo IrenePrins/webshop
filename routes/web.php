@@ -33,3 +33,4 @@ Auth::routes();
 
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::post('/dashboard/status/{id}', 'DashboardController@status')->name('dashboard.status');

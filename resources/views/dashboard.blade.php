@@ -26,12 +26,23 @@
                             <tr>
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->description}}</td>
+                                <td>
+                                    {!!Form::open(['action' => ['DashboardController@status', $product->id], 'method' => 'POST'])!!}
+                                        @if($product->status == 1)
+                                        {{Form::submit('Active', ['class' => 'btn btn-primary'])}}
+                                        @else
+                                        {{Form::submit('Inactive', ['class' => 'btn btn-default'])}}
+                                        @endif
+                                    {!!Form::close()!!}
+                                
+                                </td>
                                 <td><a href="/products/{{$product->id}}/edit" class="btn btn-primary">Edit</a>
                                     {!!Form::open(['action' => ['ProductsController@destroy', $product->id], 'method' => 'POST', 'class' => 'float-right'])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                                     {!!Form::close()!!}
                                 </td>
+                                
                             </tr>
                             @endforeach
                         </table>             

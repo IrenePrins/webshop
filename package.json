@@ -18,5 +18,10 @@
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "ajv": "^6.0.0",
+        "bootstrap-toggle": "^2.2.2",
+        "imagemin": "^5.0.0"
     }
 }
