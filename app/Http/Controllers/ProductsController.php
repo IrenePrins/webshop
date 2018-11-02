@@ -16,14 +16,16 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
+    public function __construct(Product $model)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->model = $model;
     }
 
     public function index()
     {
-        $products = Product::orderby('title', 'dsc')->paginate(10);
+        // $products = Product::orderby('title', 'dsc')->paginate(10);
+        $products = $this->model->getAllProducts();
 
         return view('products/index')->with('products', $products);
     }
@@ -85,8 +87,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //show all products
-        $product = Product::find($id);
+        //show the products
+        // $product = Product::find($id);
+        $product = $this->model->showProduct($id);
         return view('products.show')->with('product', $product);
     }
 
@@ -98,7 +101,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = $this->model->showProduct($id);
 
         //check correct user
         if(auth()->user()->id !== $product->user_id){
@@ -116,7 +119,7 @@ class ProductsController extends Controller
      */
     public function update(CreateProductRequest $request, $id)
     {
-        // dd("HIER NIET?? :(");
+        
         //handle file upload
         if($request->hasFile('image')){
             //getfilename with extention
@@ -155,7 +158,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = $this->model->showProduct($id);
 
         if(auth()->user()->id !== $product->user_id){
             return redirect('/products');

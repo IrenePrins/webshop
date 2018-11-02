@@ -13,9 +13,10 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $model)
     {
         $this->middleware('auth');
+        $this->model = $model;
     }
 
     /**
@@ -26,7 +27,8 @@ class DashboardController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $user = User::find($user_id);
+        $user = $this->model->getUser($user_id);
+
         return view('dashboard')->with('products', $user->products);
     }
 
@@ -35,9 +37,10 @@ class DashboardController extends Controller
      */
     public function status($id)
     {
-        $product = Product::find($id);
+        $product = $this->model->getProduct($id);
         $product->status = !$product->status;
         $product->save();
+
         return redirect()->action('DashboardController@index');
     }
 }
