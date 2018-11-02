@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\User;
+use App\Search;
 
 class SearchController extends Controller
 {
+
+    public function __construct(Search $model){
+        $this->model = $model;
+
+    }
+
     public function search(Request $request){
 
         $messages = [
@@ -22,10 +29,7 @@ class SearchController extends Controller
 
         $search = $request->input('search');
 
-        $results = DB::table('products')
-                ->where('title', 'like', "%$search%")
-                ->orWhere('description', 'like', "%$search%")
-                ->get();
+        $results = $this->model->getSearchResults($search);
 
         return view('search')->with('results', $results);
         
@@ -34,9 +38,7 @@ class SearchController extends Controller
     public function filter(Request $request){
         $filter = $request->input('filter');
 
-        $results = DB::table('products')
-                ->where('category', 'like', "%$filter%")
-                ->get();
+        $results = $this->model->getFilterResults($filter);
                 
         return view('filter')->with('results', $results);
     }

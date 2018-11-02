@@ -32,4 +32,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Product');
     }
+
+    public function getUser($user_id){
+
+        $user = User::find($user_id);
+        
+        return $user;
+    }
+
+    public function getProduct($id){
+        $product = Product::find($id);
+
+        return $product;
+    }
 }

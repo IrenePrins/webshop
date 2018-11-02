@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -10,7 +11,15 @@ class Product extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function categorie(){
-        return $this->belongsTo('App\Category');
+    public function getAllProducts(){
+        $products = Product::orderby('title', 'dsc')->paginate(100);
+        return $products;
     }
+
+    public function showProduct($id){
+        $product = Product::find($id);
+        return $product;
+    }
+
+    
 }
