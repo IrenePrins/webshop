@@ -66,7 +66,7 @@ class ProductsController extends Controller
             $filenameToStore = 'noimage.jpg';
         };
 
-        // data valid
+        // data valid 
         $product = new Product;
         $product->title = $request->input('title');
         $product->description = $request->input('description');
@@ -87,9 +87,10 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //show the products
-        // $product = Product::find($id);
+        //get product
         $product = $this->model->showProduct($id);
+
+        //return view with product
         return view('products.show')->with('product', $product);
     }
 
@@ -101,12 +102,15 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        //get product
         $product = $this->model->showProduct($id);
 
         //check correct user
         if(auth()->user()->id !== $product->user_id){
             return redirect('/products')->with('error', 'Unauthorized page, no access');
         }
+
+        //return view with product
         return view('products.edit')->with('product', $product);
     }
 
@@ -147,6 +151,7 @@ class ProductsController extends Controller
         $product->category = $request->input('category');
         $product->save();
         
+        //return view with message
         return redirect('/products')->with('success', 'Your product is updated!');
     }
 
@@ -158,14 +163,18 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        //get product
         $product = $this->model->showProduct($id);
 
+        //check correct user
         if(auth()->user()->id !== $product->user_id){
             return redirect('/products');
         }
 
+        //delete product
         $product->delete();
 
+        //return view with message
         return redirect('/products')->with('success', 'Your product is deleted!');
     }
 }

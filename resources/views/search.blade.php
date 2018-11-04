@@ -14,7 +14,7 @@
                     <h5 class="card-title">{{$result->title}}</h5>
                     <p class="card-text">{{str_limit($result->description, 80)}}</p>
                     <a href="/products/{{$result->id}}" class="btn btn-primary">Details</a>
-
+                    <span>{{ $errors->first('search')}}</span>
                   {{-- <a href="/products/{{$product->id}}" class="btn btn-primary">Details</a> --}}
                 </div>
               </div>

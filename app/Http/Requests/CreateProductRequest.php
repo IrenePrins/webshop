@@ -23,6 +23,7 @@ class CreateProductRequest extends FormRequest
      */
     public function rules()
     {
+        // validatie regels
         return [
             //
             'title' => 'required',
@@ -40,6 +41,7 @@ class CreateProductRequest extends FormRequest
      */
     public function messages()
     {
+        // messages for rules
         return [
             'title.required' => 'Please, fill in the name',
             'description.required' => 'Please, fill in the description',
