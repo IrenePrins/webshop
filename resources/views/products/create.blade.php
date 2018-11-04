@@ -31,11 +31,13 @@
             <div class="form-group">
                 {!! Form::label('category', 'Category')!!}
                 {!! Form::select('category', ['Heels' => 'Heels', 'Boots' => 'Boots', 'Sandals' => 'Sandals', 'Sneakers' => 'Sneakers'], null, ['placeholder' => 'Pick a category...', 'class' => 'form-control'])!!}
+                {{ $errors->first('category')}}
             </div>
         
             <div class="form-group">
                 {!! Form::label('Img', 'Image of the product')!!}
                 {!!Form::file('image', ['class' => 'form-control'])!!}
+                {{ $errors->first('image')}}
                 <br><br>
             </div>
             

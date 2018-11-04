@@ -28,7 +28,8 @@ class CreateProductRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'price' => ['required', 'numeric'],
-            'image' => 'image|nullable|max:1999'
+            'category' => 'required',
+            'image' => 'image|required|max:1999'
         ];
     }
 
@@ -43,7 +44,9 @@ class CreateProductRequest extends FormRequest
             'title.required' => 'Please, fill in the name',
             'description.required' => 'Please, fill in the description',
             'price.required' => 'Please, fill in the price',
-            'image.image' => 'Ech wel gek!'
+            'category.required' => 'Please, choose a category',
+            'image.image' => 'Please, upload a image',
+            'image.required' => 'Please, upload a image'
         ];
     }
 }
